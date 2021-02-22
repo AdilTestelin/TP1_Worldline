@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Message {
 
     @PrimaryKey
-    private String id;
+    private String Message_ID;
 
     @Column
     private String status;
@@ -32,7 +32,7 @@ public class Message {
     private ArrayList<String> aUis;
 
     public Message(String id, String status, String message_type, String EO_ID, int UI_Type, ArrayList<String> aUis) {
-        this.id = id;
+        this.Message_ID = id;
         this.status = "IN_PROGRESS";
         this.message_type = message_type;
         this.EO_ID = EO_ID;
@@ -43,11 +43,11 @@ public class Message {
     public Message(){};
 
     public String getId() {
-        return id;
+        return Message_ID;
     }
 
     public void setMessage_ID(String message_ID) {
-        this.id = message_ID;
+        this.Message_ID = message_ID;
     }
 
     public String getMessage_type() {

@@ -1,6 +1,6 @@
 CREATE table message (
-        id VARCHAR PRIMARY KEY,
-        status VARCHAR,
+        Message_ID VARCHAR PRIMARY KEY,
+        Status VARCHAR,
         EO_ID VARCHAR,
         message_type VARCHAR,
         UI_Type int,

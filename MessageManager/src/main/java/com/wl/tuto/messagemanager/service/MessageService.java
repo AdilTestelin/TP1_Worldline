@@ -34,18 +34,17 @@ public class MessageService {
     }
 
     public Message getMessageById(String id){
-       return this.messageRepository.findById(id).orElseThrow(() -> new RuntimeException("Pas de chance"));
+       return this.messageRepository.findById(id).orElseThrow(() -> new RuntimeException("ID not found"));
     }
 
-    public MessageDTO createMessageDTO(String message_id, String message_type, String EO_ID, int UI_Type, ArrayList<String> aUis){
+    /** public MessageDTO createMessageDTO(String message_id, String message_type, String EO_ID, int UI_Type, ArrayList<String> aUis){
         MessageDTO msgDTO = new MessageDTO();
         msgDTO.setMessage_id(message_id);
         msgDTO.setMessage_type(message_type);
         msgDTO.setEO_ID(EO_ID);
         msgDTO.setUI_Type(UI_Type);
         msgDTO.setaUis(aUis);
-
         return msgDTO;
-    }
+    } **/
 
 }
