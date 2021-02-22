@@ -16,7 +16,7 @@ public class MessageManagerApplication {
         SpringApplication.run(MessageManagerApplication.class, args);
     }
 
-    @Bean
+    /** @Bean
     CommandLineRunner commandLineRunner(MessageRepository msgRepo){
         return args -> {
             ArrayList<String> arrStr = new ArrayList<>();
@@ -26,6 +26,6 @@ public class MessageManagerApplication {
 
             msgRepo.save(msg);
         };
-    }
+    } **/
 
 }
