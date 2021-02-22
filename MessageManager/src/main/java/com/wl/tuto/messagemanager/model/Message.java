@@ -16,7 +16,7 @@ public class Message {
     private String id;
 
     @Column
-    public static final String status = "IN_PROGRESS";
+    private String status;
 
     @Column
     private String message_type;
@@ -33,6 +33,7 @@ public class Message {
 
     public Message(String id, String status, String message_type, String EO_ID, int UI_Type, ArrayList<String> aUis) {
         this.id = id;
+        this.status = "IN_PROGRESS";
         this.message_type = message_type;
         this.EO_ID = EO_ID;
         this.UI_Type = UI_Type;
@@ -81,7 +82,15 @@ public class Message {
         this.aUis = aUis;
     }
 
-    public static String getStatus() {
-        return status;
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(){
+        this.status = "IN_PROGRESS";
+    }
+
+    public String toString(){
+        return this.getId() + this.getMessage_type() + this.getEO_ID() +  this.getaUis() + this.getUI_Type();
     }
 }
