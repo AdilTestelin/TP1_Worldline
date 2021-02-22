@@ -5,9 +5,13 @@ import com.wl.tuto.messagemanager.model.Message;
 import com.wl.tuto.messagemanager.model.dto.MessageDTO;
 import com.wl.tuto.messagemanager.model.dto.ResponseDTO;
 import com.wl.tuto.messagemanager.repository.MessageRepository;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
+
+@Service
 public class MessageService {
     private MessageRepository messageRepository;
 
@@ -15,8 +19,8 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    public void save(Message msg){
-        this.messageRepository.save(msg);
+    public Message save(Message msg){
+        return this.messageRepository.save(msg);
     }
 
     public Message toMessage(MessageDTO msgDTO){
@@ -29,8 +33,19 @@ public class MessageService {
         return msgMapp.messageToResponseDTO(msg);
     }
 
-    public Optional<Message> getMessageById(String id){
-       return this.messageRepository.findById(id);
+    public Message getMessageById(String id){
+       return this.messageRepository.findById(id).orElseThrow(() -> new RuntimeException("Pas de chance"));
+    }
+
+    public MessageDTO createMessageDTO(String message_id, String message_type, String EO_ID, int UI_Type, ArrayList<String> aUis){
+        MessageDTO msgDTO = new MessageDTO();
+        msgDTO.setMessage_id(message_id);
+        msgDTO.setMessage_type(message_type);
+        msgDTO.setEO_ID(EO_ID);
+        msgDTO.setUI_Type(UI_Type);
+        msgDTO.setaUis(aUis);
+
+        return msgDTO;
     }
 
 }

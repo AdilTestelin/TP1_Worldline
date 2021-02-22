@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class MessageDTO {
     private String message_id;
     private String message_type;
-    private String EO_ID;
-    private int UI_Type;
+    private String eo_ID;
+    private int ui_Type;
     private ArrayList<String> aUis;
 
     public String getMessage_id() {
@@ -26,19 +26,19 @@ public class MessageDTO {
     }
 
     public String getEO_ID() {
-        return EO_ID;
+        return eo_ID;
     }
 
     public void setEO_ID(String EO_ID) {
-        this.EO_ID = EO_ID;
+        this.eo_ID = EO_ID;
     }
 
     public int getUI_Type() {
-        return UI_Type;
+        return ui_Type;
     }
 
     public void setUI_Type(int UI_Type) {
-        this.UI_Type = UI_Type;
+        this.ui_Type = UI_Type;
     }
 
     public ArrayList<String> getaUis() {
@@ -47,5 +47,9 @@ public class MessageDTO {
 
     public void setaUis(ArrayList<String> aUis) {
         this.aUis = aUis;
+    }
+
+    public String toString(){
+        return this.getMessage_id() + this.getEO_ID() + this.getMessage_type() + this.getaUis() + this.getUI_Type();
     }
 }
