@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    com.wl.tuto.messagemanager: DEBUG
+
+spring:
+  application:
+    name: MessageManager
