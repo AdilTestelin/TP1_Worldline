@@ -1,8 +1,8 @@
 CREATE table message (
-id VARCHAR PRIMARY KEY,
-status VARCHAR,
-message_type VARCHAR,
-EO_ID VARCHAR,
-UI_Type int,
-aUis list<VARCHAR>
+        id VARCHAR PRIMARY KEY,
+        status VARCHAR,
+        EO_ID VARCHAR,
+        message_type VARCHAR,
+        UI_Type int,
+        aUis list<VARCHAR>
 );
