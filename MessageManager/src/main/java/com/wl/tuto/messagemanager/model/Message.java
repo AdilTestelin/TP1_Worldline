@@ -9,6 +9,7 @@ import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 import static com.wl.tuto.messagemanager.model.Message.TABLE_NAME;
