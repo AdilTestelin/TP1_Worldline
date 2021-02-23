@@ -1,5 +1,6 @@
 package com.wl.tuto.messagemanager.controller;
 
+import com.wl.tuto.messagemanager.exception.MessageNotFoundException;
 import com.wl.tuto.messagemanager.model.dto.MessageDTO;
 import com.wl.tuto.messagemanager.model.dto.ResponseDTO;
 import com.wl.tuto.messagemanager.service.MessageService;
@@ -23,10 +24,12 @@ public class MessageControler {
     }
 
     @GetMapping
-    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id){
-        ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
-        if(msgToDisplay != null){
+    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) {
+        try {
+            ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
             return ResponseEntity.ok(msgToDisplay);
+        } catch (MessageNotFoundException e) {
+            e.printStackTrace();
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
