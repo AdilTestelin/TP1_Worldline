@@ -1,33 +1,33 @@
 package com.wl.tuto.messagemanager.controller;
 
-import com.wl.tuto.messagemanager.mapper.MessageMapper;
-import com.wl.tuto.messagemanager.model.Message;
 import com.wl.tuto.messagemanager.model.dto.MessageDTO;
 import com.wl.tuto.messagemanager.model.dto.ResponseDTO;
 import com.wl.tuto.messagemanager.service.MessageService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping("/v1/message")
+@RequiredArgsConstructor
 public class MessageControler {
 
-    private MessageService messageService;
+    private final MessageService messageService;
 
-    public MessageControler(MessageService messageService){
-        this.messageService = messageService;
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    private void sendDTOMessage(@RequestBody MessageDTO msgDTO){
+        this.messageService.save(msgDTO);
     }
 
-    @PostMapping("v1/message")
-    private ResponseEntity<Message> sendDTOMessage(@RequestBody MessageDTO msgDTO){
-        Message msg = this.messageService.toMessage(msgDTO);
-        return ResponseEntity.ok(this.messageService.save(msg));
-    }
-
-    @GetMapping("v1/message")
+    @GetMapping
     private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id){
-        Message msgToSearch = this.messageService.getMessageById(id);
-        ResponseDTO msgToDisplay = this.messageService.toResponseDTO(msgToSearch);
-        return ResponseEntity.ok(msgToDisplay);
+        ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
+        if(msgToDisplay != null){
+            return ResponseEntity.ok(msgToDisplay);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }

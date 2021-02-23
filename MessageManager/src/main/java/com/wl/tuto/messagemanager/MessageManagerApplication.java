@@ -1,13 +1,7 @@
 package com.wl.tuto.messagemanager;
 
-import com.wl.tuto.messagemanager.model.Message;
-import com.wl.tuto.messagemanager.repository.MessageRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-
-import java.util.ArrayList;
 
 @SpringBootApplication
 public class MessageManagerApplication {
