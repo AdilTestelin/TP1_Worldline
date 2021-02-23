@@ -12,7 +12,7 @@ public class MessageMapper {
     public Message messageDTOToMessage(MessageDTO msgDTO){
         return Message.builder()
                 .messageId(msgDTO.getMessageID())
-                .messageType(msgDTO.getMessageID())
+                .messageType(msgDTO.getMessageType())
                 .aUis(msgDTO.getAUIs())
                 .eoId(msgDTO.getEoID())
                 .status("IN_PROGRESS")

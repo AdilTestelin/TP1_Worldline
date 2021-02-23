@@ -7,7 +7,10 @@ import com.wl.tuto.messagemanager.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 
 @RestController
@@ -19,7 +22,7 @@ public class MessageControler {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private void sendDTOMessage(@RequestBody MessageDTO msgDTO){
+    private void sendDTOMessage(@Valid @RequestBody MessageDTO msgDTO){
         this.messageService.save(msgDTO);
     }
 
