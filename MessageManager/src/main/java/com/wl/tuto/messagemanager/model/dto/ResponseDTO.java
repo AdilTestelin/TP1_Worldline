@@ -1,33 +1,21 @@
 package com.wl.tuto.messagemanager.model.dto;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
+import java.util.List;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ResponseDTO {
-    private String message_ID;
+    @JsonProperty("Message_ID")
+    private String messageID;
+    @JsonProperty("Status")
     private String status;
-    private ArrayList<String> aUis;
+    @JsonProperty("aUIs")
+    private List<String> aUis;
 
-    public String getMessage_ID() {
-        return message_ID;
-    }
-
-    public void setMessage_ID(String message_ID) {
-        this.message_ID = message_ID;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public ArrayList<String> getaUis() {
-        return aUis;
-    }
-
-    public void setaUis(ArrayList<String> aUis) {
-        this.aUis = aUis;
-    }
 }
