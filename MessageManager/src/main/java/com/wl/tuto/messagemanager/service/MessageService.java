@@ -26,7 +26,7 @@ public class MessageService {
         }
     }
 
-    public ResponseDTO getMessageById(String id) throws MessageNotFoundException {
+    public ResponseDTO getMessageById(String id) throws MessageNotFoundException { // Faire un try catch
        Optional<Message> msg = this.messageRepository.findByMessageId(id);
        if(msg.isPresent()){
            return MessageMapper.messageToResponseDTO(msg.get());

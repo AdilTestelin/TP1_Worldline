@@ -27,13 +27,12 @@ public class MessageControler {
     }
 
     @GetMapping
-    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) {
-        try {
+    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) throws MessageNotFoundException { // Faire un trycatch
             ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
-            return ResponseEntity.ok(msgToDisplay);
-        } catch (MessageNotFoundException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            if (msgToDisplay != null){
+                return ResponseEntity.ok(msgToDisplay);
+            } else {
+                throw new MessageNotFoundException();
+            }
     }
 }
