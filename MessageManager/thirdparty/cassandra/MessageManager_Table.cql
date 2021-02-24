@@ -1,8 +1,8 @@
-CREATE table message (
-        Message_ID VARCHAR PRIMARY KEY,
-        Status VARCHAR,
-        EO_ID VARCHAR,
-        message_type VARCHAR,
-        UI_Type int,
-        aUis list<VARCHAR>
-);
+CREATE TABLE IF NOT EXISTS message (
+            message_id   text primary key,
+            auis         list<text>,
+            eo_id        text,
+            message_type text,
+            status       text,
+            ui_type      int
+ );

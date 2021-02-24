@@ -1,5 +1,6 @@
 package com.wl.tuto.messagemanager.service;
 
+import com.wl.tuto.messagemanager.exception.MessageNotFoundException;
 import com.wl.tuto.messagemanager.mapper.MessageMapper;
 import com.wl.tuto.messagemanager.model.Message;
 import com.wl.tuto.messagemanager.model.dto.MessageDTO;
@@ -25,12 +26,13 @@ public class MessageService {
         }
     }
 
-    public ResponseDTO getMessageById(String id){
-       Optional<Message> msg =  this.messageRepository.findByMessageId(id);
+    public ResponseDTO getMessageById(String id) throws MessageNotFoundException {
+       Optional<Message> msg = this.messageRepository.findByMessageId(id);
        if(msg.isPresent()){
            return MessageMapper.messageToResponseDTO(msg.get());
+       } else {
+           throw new MessageNotFoundException(id);
        }
-       return null;
     }
 
 }
