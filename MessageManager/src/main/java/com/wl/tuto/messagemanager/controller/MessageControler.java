@@ -7,8 +7,13 @@ import com.wl.tuto.messagemanager.service.MessageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
@@ -27,13 +32,12 @@ public class MessageControler {
     }
 
     @GetMapping
-    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) {
-        try {
-            ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
-            return ResponseEntity.ok(msgToDisplay);
-        } catch (MessageNotFoundException e) {
-            e.printStackTrace();
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) throws MessageNotFoundException { // Faire un trycatch
+            try {
+                ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
+                return ResponseEntity.ok(msgToDisplay);
+            } catch (MessageNotFoundException e) {
+                throw new MessageNotFoundException(id);
+            }
     }
 }

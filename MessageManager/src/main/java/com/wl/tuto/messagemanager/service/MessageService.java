@@ -31,7 +31,7 @@ public class MessageService {
        if(msg.isPresent()){
            return MessageMapper.messageToResponseDTO(msg.get());
        } else {
-           throw new MessageNotFoundException();
+           throw new MessageNotFoundException(id);
        }
     }
 
