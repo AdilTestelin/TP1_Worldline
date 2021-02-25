@@ -5,11 +5,13 @@ import com.wl.tuto.messagemanager.model.Message;
 import com.wl.tuto.messagemanager.model.dto.MessageDTO;
 import com.wl.tuto.messagemanager.model.dto.ResponseDTO;
 import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SpringBootTest
 public class MessageMapperTest {
 
     @Test
