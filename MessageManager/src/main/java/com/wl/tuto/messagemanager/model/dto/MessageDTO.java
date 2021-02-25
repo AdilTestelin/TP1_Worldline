@@ -3,11 +3,10 @@ package com.wl.tuto.messagemanager.model.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -18,11 +17,12 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @NoArgsConstructor
+@EqualsAndHashCode
 public class MessageDTO {
 
     @JsonProperty("Message_ID")
-    @NotBlank(message = "massageId cannot be blank.")
-    @Pattern(regexp = "[a-zA-Z]+", message = "messageId don't suits the pattern")
+    @NotBlank(message = "messageId cannot be blank.")
+    @Pattern(regexp = "\\w+", message = "messageId don't suits the pattern")
     private String messageID;
 
     @JsonProperty("Message_Type")
