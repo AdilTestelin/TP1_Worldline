@@ -2,6 +2,7 @@ package com.wl.tuto.messagemanager.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
@@ -19,6 +20,7 @@ import static com.wl.tuto.messagemanager.model.Message.TABLE_NAME;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@EqualsAndHashCode
 public class Message {
 
     public static final String TABLE_NAME = "message";

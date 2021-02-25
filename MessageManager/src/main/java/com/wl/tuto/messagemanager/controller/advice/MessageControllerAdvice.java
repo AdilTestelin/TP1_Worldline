@@ -8,7 +8,6 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
@@ -19,8 +18,7 @@ import java.util.List;
 public class MessageControllerAdvice {
 
     @ExceptionHandler({MessageNotFoundException.class})
-    @ResponseBody
-    private ResponseEntity<Object> handleMessageNotFoundException(MessageNotFoundException e){
+    private ResponseEntity<ErrorDTO> handleMessageNotFoundException(MessageNotFoundException e){
         List<String> details = new ArrayList<>();
         details.add(e.getMessage());
         ErrorDTO er = new ErrorDTO(
@@ -32,8 +30,7 @@ public class MessageControllerAdvice {
     }
 
     @ExceptionHandler({HttpMessageNotReadableException.class})
-    @ResponseBody
-    private ResponseEntity<Object> handleHttpMessageNotReadableException(HttpMessageNotReadableException e){
+    private ResponseEntity<ErrorDTO> handleHttpMessageNotReadableException(HttpMessageNotReadableException e){
         List<String> details = new ArrayList<>();
         details.add(e.getMessage());
         ErrorDTO er = new ErrorDTO(
@@ -46,7 +43,7 @@ public class MessageControllerAdvice {
     }
 
     @ExceptionHandler({MethodArgumentNotValidException.class})
-     private ResponseEntity<Object> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
+     private ResponseEntity<ErrorDTO> handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
         List<String> details = new ArrayList<>();
         for (ObjectError error : e.getBindingResult().getAllErrors()) {
             details.add(error.getDefaultMessage());
