@@ -1,13 +1,4 @@
-server:
-  port: 8080
-
-logging:
-  level:
-    com.wl.tuto.messagemanager: DEBUG
-
 spring:
-  application:
-    name: MessageManager
   data:
     cassandra:
       keyspace-name: message_keyspace

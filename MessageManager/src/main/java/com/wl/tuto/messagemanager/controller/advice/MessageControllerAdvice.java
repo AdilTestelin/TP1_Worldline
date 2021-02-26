@@ -17,6 +17,9 @@ import java.util.List;
 @RestControllerAdvice
 public class MessageControllerAdvice {
 
+    public static final String MESSAGE_NOT_FOUND = "MESSAGE_NOT_FOUND";
+    public static final String MESSAGE_NOT_VALID = "MESSAGE_NOT_VALID";
+
     @ExceptionHandler({MessageNotFoundException.class})
     private ResponseEntity<ErrorDTO> handleMessageNotFoundException(MessageNotFoundException e){
         List<String> details = new ArrayList<>();
@@ -24,7 +27,7 @@ public class MessageControllerAdvice {
         ErrorDTO er = new ErrorDTO(
                 ErrorDTO.getDate(),
                 HttpStatus.NOT_FOUND.value(),
-                "MESSAGE_NOT_FOUND",
+                MESSAGE_NOT_FOUND,
                 details);
         return new ResponseEntity<>(er, HttpStatus.NOT_FOUND);
     }
@@ -36,7 +39,7 @@ public class MessageControllerAdvice {
         ErrorDTO er = new ErrorDTO(
                 ErrorDTO.getDate(),
                 HttpStatus.BAD_REQUEST.value(),
-                "MESSAGE_NOT_VALID",
+                MESSAGE_NOT_VALID,
                 details);
 
         return new ResponseEntity<>(er, HttpStatus.BAD_REQUEST);
@@ -51,7 +54,7 @@ public class MessageControllerAdvice {
          ErrorDTO er = new ErrorDTO(
                  ErrorDTO.getDate(),
                  HttpStatus.BAD_REQUEST.value(),
-                 "MESSAGE_NOT_VALID",
+                 MESSAGE_NOT_VALID,
                  details);
 
          return new ResponseEntity<>(er, HttpStatus.BAD_REQUEST);
