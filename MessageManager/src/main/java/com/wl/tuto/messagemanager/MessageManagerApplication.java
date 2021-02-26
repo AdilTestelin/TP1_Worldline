@@ -10,16 +10,5 @@ public class MessageManagerApplication {
         SpringApplication.run(MessageManagerApplication.class, args);
     }
 
-    /** @Bean
-    CommandLineRunner commandLineRunner(MessageRepository msgRepo){
-        return args -> {
-            ArrayList<String> arrStr = new ArrayList<>();
-            arrStr.add("test");
-            arrStr.add("test1");
-            Message msg = new Message("TestId", Message.getStatus(), "test", "test", 1, arrStr);
-
-            msgRepo.save(msg);
-        };
-    } **/
 
 }

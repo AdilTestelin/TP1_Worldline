@@ -1,0 +1,7 @@
+spring:
+  data:
+    cassandra:
+      keyspace-name: message_keyspace
+      port: 9142
+      contact-points:
+        - localhost

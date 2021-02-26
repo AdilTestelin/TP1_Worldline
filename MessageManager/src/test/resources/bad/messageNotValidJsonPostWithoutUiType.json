@@ -1,0 +1,9 @@
+{
+  "Message_ID" : "unmessageid",
+  "Message_Type": "test",
+  "EO_ID": "test",
+  "aUIs": [
+    "aUI_1",
+    "aUI_2"
+  ]
+}
