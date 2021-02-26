@@ -27,12 +27,12 @@ public class MessageControler {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    private void sendDTOMessage(@Valid @RequestBody MessageDTO msgDTO){
+    public void sendDTOMessage(@Valid @RequestBody MessageDTO msgDTO){
         this.messageService.save(msgDTO);
     }
 
     @GetMapping
-    private ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) throws MessageNotFoundException { // Faire un trycatch
+    public ResponseEntity<ResponseDTO> getMessage(@RequestParam String id) throws MessageNotFoundException { // Faire un trycatch
             try {
                 ResponseDTO msgToDisplay = this.messageService.getMessageById(id);
                 return ResponseEntity.ok(msgToDisplay);
